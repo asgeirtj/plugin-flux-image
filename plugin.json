@@ -1,0 +1,120 @@
+{
+  "id": "generate_flux_ai_image",
+  "uuid": "8d51b70e-ec6d-455c-b741-7db9447efeda",
+  "emoji": "🧑🏻‍🎨",
+  "title": "Flux AI Image Generator",
+  "openaiSpec": {
+      "name": "generate_flux_ai_image",
+      "parameters": {
+          "type": "object",
+          "required": [
+              "prompt"
+          ],
+          "properties": {
+              "prompt": {
+                  "type": "string",
+                  "description": "The exact description of the image(s) to generate. This will be used verbatim."
+              },
+              "image_size": {
+                  "enum": [
+                      "landscape_4_3",
+                      "portrait_4_3",
+                      "square",
+                      "landscape_16_9",
+                      "portrait_16_9"
+                  ],
+                  "type": "string",
+                  "description": "The size and aspect ratio of the generated image. Only specify this if the user explicitly requests a specific size. Otherwise, omit this parameter to use the user's default setting."
+              },
+              "num_images": {
+                  "type": "integer",
+                  "maximum": 4,
+                  "minimum": 1,
+                  "description": "The number of images to generate. Only specify this if the user explicitly requests a specific number of images. Otherwise, omit this parameter to use the user's default setting."
+              },
+              "guidance_scale": {
+                  "type": "number",
+                  "maximum": 20,
+                  "minimum": 1,
+                  "description": "The guidance scale, controlling how closely the image adheres to the prompt. Only specify this if the user explicitly requests a specific scale. Otherwise, omit this parameter to use the user's default setting. Range: 1-20."
+              },
+              "num_inference_steps": {
+                  "type": "integer",
+                  "maximum": 50,
+                  "minimum": 1,
+                  "description": "The number of inference steps to perform. Only specify this if the user explicitly requests a specific number of steps. Otherwise, omit this parameter to use the user's default setting. Range: 1-50."
+              }
+          }
+      },
+      "description": "Generate images using Flux AI based on a text description. Always use the exact prompt provided. Do not specify num_images, image_size, num_inference_steps, or guidance_scale unless explicitly requested by the user; these will default to the user's settings."
+  },
+  "outputType": "respond_to_ai",
+  "userSettings": [
+      {
+          "name": "fal_api_key",
+          "type": "password",
+          "label": "fal.ai API Key",
+          "required": true,
+          "description": "Your fal.ai API key for accessing Flux AI"
+      },
+      {
+          "name": "image_size",
+          "type": "enum",
+          "label": "Image Size",
+          "values": [
+              "landscape_4_3",
+              "portrait_4_3",
+              "square",
+              "landscape_16_9",
+              "portrait_16_9"
+          ],
+          "default": "portrait_4_3",
+          "description": "Size and aspect ratio for generated images (default: portrait_4_3)"
+      },
+      {
+          "name": "num_inference_steps",
+          "type": "number",
+          "label": "Inference Steps",
+          "default": 35,
+          "description": "Number of inference steps (default: 35, range: 1-50)"
+      },
+      {
+          "name": "guidance_scale",
+          "type": "number",
+          "label": "Guidance Scale",
+          "default": 5,
+          "description": "Guidance scale for image generation (default: 5, range: 1-20)"
+      },
+      {
+          "name": "num_images",
+          "type": "number",
+          "label": "Number of Images",
+          "default": 4,
+          "description": "Number of images to generate (default: 4, range: 1-4)"
+      },
+      {
+          "name": "enable_safety_checker",
+          "type": "enum",
+          "label": "Enable Safety Checker",
+          "values": [
+              "true",
+              "false"
+          ],
+          "default": "false",
+          "description": "Enable or disable the safety checker (default: disabled)"
+      },
+      {
+          "name": "use_verbatim_prompt",
+          "type": "enum",
+          "label": "Use Verbatim Prompt",
+          "values": [
+              "true",
+              "false"
+          ],
+          "default": "true",
+          "description": "Use the exact prompt provided without AI improvements (default: enabled)"
+      }
+  ],
+  "overviewMarkdown": "Generate unique images using Flux AI, powered by fal.ai. Transform your ideas into stunning visuals with just a text prompt.\n",
+  "implementationType": "javascript"
+}
