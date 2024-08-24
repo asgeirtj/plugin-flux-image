@@ -1,7 +1,7 @@
 {
   "id": "generate_flux_ai_image",
   "uuid": "8d51b70e-ec6d-455c-b741-7db9447efeda",
-  "emoji": "🧑🏻‍🎨",
+  "emoji": "https://is.gd/yiJQst",
   "title": "Flux AI Image Generator",
   "openaiSpec": {
       "name": "generate_flux_ai_image",
